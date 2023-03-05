@@ -11,12 +11,10 @@ class Explore extends StatefulWidget {
 class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return Row(children: [Post(), Vote()]);
-          }),
-    );
+    return ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) {
+          return Row(children: [Post((index + 1).toString()), Vote()]);
+        });
   }
 }
