@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'explore.dart';
+import 'leaderboard.dart';
+import 'profile.dart';
 
+// GENERAL CODE //
 void main() {
   runApp(const App());
 }
@@ -14,26 +18,37 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const HomePage(title: 'project-feed'),
+      home: const Home(title: 'project-feed'),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+// GENERAL CODE
+
+class Home extends StatefulWidget {
+  const Home({super.key, required this.title});
 
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
-  String _postText = "";
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
 
-  void _post() {
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Explore(),
+    Leaderboard(),
+    Profile(),
+  ];
+
+  void _onItemTapped(int index) {
     setState(() {
-      _postText;
+      _selectedIndex = index;
     });
   }
 
@@ -42,26 +57,26 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: null,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Your post',
-            ),
-            Text(
-              '$_postText',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const TextField(
-              maxLines: 1,
-            ),
-          ],
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _post,
-        tooltip: 'Increment',
-        child: const Icon(Icons.comment),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard),
+            label: 'Leaderboard',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromARGB(255, 22, 196, 37),
+        onTap: _onItemTapped,
       ),
     );
   }
