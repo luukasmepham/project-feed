@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'post.dart';
+import 'vote.dart';
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);
@@ -9,10 +11,12 @@ class Explore extends StatefulWidget {
 class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: const Text("test"),
-      ),
+    return Container(
+      child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
+            return Row(children: [Post(), Vote()]);
+          }),
     );
   }
 }

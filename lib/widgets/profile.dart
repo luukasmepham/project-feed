@@ -11,7 +11,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: const Text("test"),
+        child: const Text("Under construction"),
       ),
     );
   }

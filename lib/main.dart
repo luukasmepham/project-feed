@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'explore.dart';
-import 'leaderboard.dart';
-import 'profile.dart';
+import 'widgets/explore_widget/explore.dart';
+import 'widgets/leaderboard.dart';
+import 'widgets/profile.dart';
 
 // GENERAL CODE //
 void main() {
@@ -22,9 +22,9 @@ class App extends StatelessWidget {
     );
   }
 }
-
 // GENERAL CODE
 
+// HOME PAGE WITH NAVBAR TO WIDGETS //
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
 
@@ -81,3 +81,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+// HOME PAGE WITH NAVBAR TO WIDGETS //

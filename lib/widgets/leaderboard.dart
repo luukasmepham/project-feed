@@ -11,7 +11,7 @@ class _LeaderboardState extends State<Leaderboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: const Text("test2"),
+        child: const Text("Under construction"),
       ),
     );
   }
